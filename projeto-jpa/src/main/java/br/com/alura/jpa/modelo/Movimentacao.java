@@ -9,6 +9,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Movimentacao {
@@ -23,6 +24,9 @@ public class Movimentacao {
 	private LocalDateTime data;
 	private String descricao;
 	private BigDecimal valor;
+
+	@ManyToOne
+	private Conta conta;
 
 	public Long getId() {
 		return id;
@@ -63,4 +67,13 @@ public class Movimentacao {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
+	public Conta getConta() {
+		return conta;
+	}
+
+	public void setConta(Conta conta) {
+		this.conta = conta;
+	}
+
 }
