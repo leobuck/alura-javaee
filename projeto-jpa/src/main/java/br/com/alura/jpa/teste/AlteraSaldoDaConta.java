@@ -5,21 +5,20 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-public class CriaConta {
+public class AlteraSaldoDaConta {
 
 	public static void main(String[] args) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("contas");
 		EntityManager em = emf.createEntityManager();
 		
-		Conta conta = new Conta();
-		conta.setTitular("Leonardo");
-		conta.setNumero(1234);
-		conta.setAgencia(1);
+		Conta contaDoLeo = em.find(Conta.class, 1L);
+		
+		System.out.println("Conta do Leonardo: " + contaDoLeo.getTitular());
 		
 		em.getTransaction().begin();
 		
-		em.persist(conta);
-
+		contaDoLeo.setSaldo(20.0);
+		
 		em.getTransaction().commit();
 	}
 }
