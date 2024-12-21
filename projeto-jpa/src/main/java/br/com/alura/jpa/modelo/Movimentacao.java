@@ -2,6 +2,7 @@ package br.com.alura.jpa.modelo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -9,6 +10,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -27,6 +29,9 @@ public class Movimentacao {
 
 	@ManyToOne
 	private Conta conta;
+	
+	@ManyToMany
+	private List<Categoria> categoria;
 
 	public Long getId() {
 		return id;
